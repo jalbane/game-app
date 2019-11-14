@@ -8,12 +8,12 @@ class  App extends Component {
     super()
     this.state ={
       squares: [
-                0,0,true,0,0,
-                0,true,0,true,0,
-                true,0,0,0,true,
-                0,true,0,true,0,
-                0,0,true,0,0
-              ],
+                false, false, true, false, false, 
+                false, true, false, true, false, 
+                true, false, false, false, true,
+                false, true, false, true, false, 
+                false, false, true, false, false
+               ],
       load: true,
       winner: false
     }
