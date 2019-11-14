@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+    width: 22%;
+    margin: auto;
+    display: table;
+
 }
 
 .App-logo {
@@ -19,4 +22,15 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.row{
+
+  display: table-row; 
+}
+
+.button{
+  display: table-cell;
+  width: 80px;
+  height: 80px;
 }
