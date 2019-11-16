@@ -19,15 +19,16 @@ class  App extends Component {
     }
   }
 
-  handleButtonSwap(index){
+  handleButtonSwap(index, props){
     let value = this.state.squares.slice()
     let winCondition = value.every( (index) => index === true  )
-    this.setState({winner: winCondition})
+    
 
     let hasNeighborTop
     let hasNeighborBottom
     let hasNeighborLeft
     let hasNeighborRight
+    this.setState({winner: winCondition})
     if (!this.state.winner){
         switch (index){
           case 0:
@@ -142,42 +143,34 @@ class  App extends Component {
         if (hasNeighborTop){
           const neighborTop = index - 5
           a[neighborTop] = !this.state.squares[neighborTop]
-          this.setState({
-                        squares:  a
-                      })
         }
 
 
         if (hasNeighborBottom){
           const neighborBottom = index + 5   
           a[neighborBottom] = !this.state.squares[neighborBottom]
-          this.setState({
-                        squares:  a
-                      })
+
         }
 
 
         if (hasNeighborRight){
           const neighborRight = index + 1 
           a[neighborRight] = !this.state.squares[neighborRight]
-          this.setState({
-                        squares:  a
-                      })
+
         }
 
 
         if (hasNeighborLeft){
               const neighborLeft = index - 1
           a[neighborLeft] = !this.state.squares[neighborLeft]
-          this.setState({
-                        squares:  a
-                      })
+
         }
-    } else {
-    value = this.state.squares.slice()
-    winCondition = value.every( (index) => index === true  )
-    this.setState({winner: winCondition})
+        console.log(a)
+        this.setState({squares:a})
+
     }
+      else
+          this.setState ({winner: true})
   }
 
   render(){
@@ -185,12 +178,13 @@ class  App extends Component {
       this.setState ({
                         load: false,
                     })
+    
     } 
 
     return (
       <div className="App">
-         <div className = 'row'>
-          <button className = 'button' onClick = { () => this.handleButtonSwap(0) }> 
+         {this.state.winner ? <h1> You Won </h1> :  <div className = 'row'>
+          <button className = 'button' onClick = { () => this.handleButtonSwap(0, this.props.winner) }> 
             <div> 
               {Number(this.state.squares[0])} 
             </div> 
@@ -216,9 +210,7 @@ class  App extends Component {
               {Number(this.state.squares[4])} 
             </div> 
           </button>
-        </div>
-
-        <div className = 'row'>
+ 
           
           <button className = 'button' onClick = { () => this.handleButtonSwap(5) }> 
             <div> 
@@ -250,9 +242,6 @@ class  App extends Component {
             </div> 
           </button>
 
-        </div>
-
-        <div className = 'row'>
           <button className = 'button' onClick = { () => this.handleButtonSwap(10) }> 
             <div> 
               {Number(this.state.squares[10])} 
@@ -279,8 +268,7 @@ class  App extends Component {
               {Number(this.state.squares[14])} 
             </div> 
           </button>
-        </div>     
-        <div className = 'row'>
+  
           <button className = 'button' onClick = { () => this.handleButtonSwap(15) }> 
             <div> 
               {Number(this.state.squares[15])} 
@@ -307,8 +295,7 @@ class  App extends Component {
               {Number(this.state.squares[19])} 
             </div> 
           </button>
-        </div> 
-        <div className = 'row'>
+      
           <button className = 'button' onClick = { () => this.handleButtonSwap(20) }> 
             <div> 
               {Number(this.state.squares[20])} 
@@ -335,8 +322,8 @@ class  App extends Component {
               {Number(this.state.squares[24])} 
             </div> 
           </button>
-        </div>
-        {this.state.winner? <h1> You Won </h1> :  <h1> You haven\'t won yet  </h1>}
+        </div> }
+        {this.state.winner? <h1> You Won </h1> : null}
       </div>
     );
   }

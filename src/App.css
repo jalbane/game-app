@@ -24,10 +24,6 @@
   color: #09d3ac;
 }
 
-.row{
-
-  display: table-row; 
-}
 
 .button{
   display: table-cell;
