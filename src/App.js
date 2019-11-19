@@ -23,7 +23,6 @@ class  App extends Component {
     let value = this.state.squares.slice()
     let winCondition = value.every( (index) => index === true  )
     
-
     let hasNeighborTop
     let hasNeighborBottom
     let hasNeighborLeft
